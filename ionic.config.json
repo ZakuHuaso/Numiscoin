@@ -1,0 +1,7 @@
+{
+  "name": "Numiscoin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
