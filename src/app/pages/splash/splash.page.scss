@@ -1,0 +1,16 @@
+ion-content {
+  --background: #38422D;
+  padding: 0;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Hace que ocupe el alto total de la pantalla */
+}
+
+.logo-container img {
+  width: 250px;
+  height: auto;
+}
