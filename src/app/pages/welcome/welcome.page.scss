@@ -1,0 +1,57 @@
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 40px 20px 30px;
+  box-sizing: border-box;
+  text-align: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+
+  img {
+    width: 340px;
+    height: 340px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-weight: bold;
+    color: #001f5c;
+    font-size: 22px;
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 16px;
+    color: #666;
+    margin: 0 10px;
+    max-width: 320px;
+  }
+
+  ion-button {
+    width: 100%;
+    max-width: 300px;
+    --background: #0010F7;
+    --border-radius: 12px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Puntos del slider */
+swiper-container::part(pagination) {
+  bottom: 16px;
+  color: #001f5c;
+}
+

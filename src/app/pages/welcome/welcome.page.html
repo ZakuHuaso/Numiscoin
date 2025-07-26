@@ -1,0 +1,75 @@
+<ion-content>
+  <swiper-container
+    pagination="true"
+    loop="false"
+    style="height: 100%"
+  >
+    <!-- Slide 1 -->
+    <swiper-slide>
+      <div class="slide">
+        <div class="content">
+        <img src="assets/images/welcome1.png" alt="Bienvenida" />
+        <h2>¡Bienvenido a Numiscoin!</h2>
+        <p>
+          Tu espacio todo-en-uno para los amantes de la numismática.  
+          Explora, organiza y conecta con otros apasionados por las monedas.
+        </p>
+        </div>
+        <ion-button  onclick="document.querySelector('swiper-container').swiper.slideNext()">
+          Siguiente
+        </ion-button>
+      </div>
+    </swiper-slide>
+
+    <!-- Slide 2 -->
+    <swiper-slide>
+      <div class="slide">
+        <div class="content">
+        <img src="assets/images/welcome2.png" alt="Colecciones" />
+        <h2>Gestiona tu colección</h2>
+        <p>
+          Agrega monedas con fotos, país, año y rareza.  
+          Ordena y visualiza fácilmente tu colección desde cualquier lugar.
+        </p>
+        </div>
+        <ion-button expand="block" onclick="document.querySelector('swiper-container').swiper.slideNext()">
+          Siguiente
+        </ion-button>
+      </div>
+    </swiper-slide>
+
+    <!-- Slide 3 -->
+    <swiper-slide>
+      <div class="slide">
+        <div class="content">
+        <img src="assets/images/welcome3.png" alt="Dólar y marketplace" />
+        <h2>Dólar y Marketplace</h2>
+        <p>
+          Consulta el valor actualizado del dólar  
+          y compra o vende monedas únicas en nuestro marketplace especializado.
+        </p>
+        </div>
+        <ion-button expand="block" onclick="document.querySelector('swiper-container').swiper.slideNext()">
+          Siguiente
+        </ion-button>
+      </div>
+    </swiper-slide>
+
+    <!-- Slide 4 -->
+    <swiper-slide>
+      <div class="slide">
+        <div class="content">
+        <img src="assets/images/welcome4.png" alt="Comenzar" />
+        <h2>Tu colección, tu historia</h2>
+        <p>
+          Crea tu cuenta y empieza a coleccionar digitalmente.  
+          ¡Todo lo que necesitas está aquí!
+        </p>
+      </div>
+        <ion-button expand="block" [routerLink]="['/auth/login']">
+          Comenzar
+        </ion-button>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>
