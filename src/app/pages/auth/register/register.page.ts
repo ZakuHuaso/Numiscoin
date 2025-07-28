@@ -9,13 +9,12 @@ import {
   IonBackButton,
   IonButton,
   IonIcon,
-  IonLabel,
   IonInput,
   IonItem,
   IonText,
-  IonList,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-register',
@@ -39,7 +38,22 @@ import {
   ],
 })
 export class RegisterPage implements OnInit {
-  constructor() {}
+  constructor( 
+    private router: Router 
+  ) {
+  }
 
   ngOnInit() {}
+
+  //After registration, navigate to the login page
+  submitRegister() {
+    // Logic for registration goes here
+    // After successful registration, navigate to the login page
+    this.router.navigate(['/auth/login']);
+  }
+
+  goBack() {
+    this.router.navigate(['/auth/login']);
+  }
+
 }

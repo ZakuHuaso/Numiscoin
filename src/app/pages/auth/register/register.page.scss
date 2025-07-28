@@ -1,196 +1,172 @@
 .custom-header {
   --background: transparent;
-  
-  ion-toolbar {
-    --background: transparent;
-    --color: white;
-    
-    ion-title {
-      font-weight: 600;
-      letter-spacing: 1px;
-      font-size: 18px;
-    }
-    
-    ion-back-button {
-      --color: white;
-    }
-  }
+  z-index: 10;
+  ion-toolbar { --background: transparent; --color: white; }
+  ion-title { font-weight: 600; letter-spacing: 1px; font-size: 13px; }
+  ion-back-button { --color: white; }
 }
 
 .register-content {
-  --background: linear-gradient(180deg, #000000 0%, #1a3a3a 100%);
+  --background: linear-gradient(180deg, #000 0%, #1a3a3a 100%);
   --color: white;
 }
 
 .register-container {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  padding: 0 32px;
+  min-height: 100vh;
+  padding: 120px 32px 0;
 }
 
 .form-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 20px 0;
 }
 
 .input-item {
   --background: transparent;
   --color: white;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #4a6b6b;
   --border-color: transparent;
   --inner-border-width: 0;
-  --min-height: 50px;
+  --min-height: 48px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #4a6b6b;
   
-  ion-icon {
-    color: white;
-    margin-right: 16px;
-    font-size: 18px;
-  }
+  ion-icon { color: white; margin-right: 16px; font-size: 18px; }
+  &:focus-within { border-bottom-color: white; }
 }
 
 .custom-input {
   --color: white;
-  --placeholder-color: #cccccc;
-  --placeholder-opacity: 1;
+  --placeholder-color: #ccc;
   font-size: 16px;
-  
-  input {
-    --color: white !important;
-  }
-}
-
-.input-item:focus-within {
-  border-bottom-color: white;
+  input { --color: white !important; }
 }
 
 .terms-text {
   text-align: center;
-  margin: 20px 0 30px 0;
+  margin: 16px 0 24px;
   padding: 0 10px;
-  
-  ion-text {
-    font-size: 13px;
-    --color: #cccccc;
-    line-height: 1.4;
-  }
+  ion-text { font-size: 12px; --color: #ccc; line-height: 1.4; }
+}
+
+.register-button, .login-button {
+  --color: white;
+  --border-radius: 8px;
+  height: 48px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  backdrop-filter: blur(10px);
+  &:hover { --background: rgba(255,255,255,0.3); }
 }
 
 .register-button {
-  --background: rgba(255, 255, 255, 0.2);
-  --color: white;
-  --border-radius: 8px;
-  height: 50px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 0 0 40px 0;
-  backdrop-filter: blur(10px);
-  
-  &:hover {
-    --background: rgba(255, 255, 255, 0.3);
-  }
+  --background: rgba(255,255,255,0.2);
+  margin: 0 0 20px;
+}
+
+.login-button {
+  --border-color: rgba(255,255,255,0.3);
+  --background: rgba(255,255,255,0.15);
+  &:hover { --background: rgba(255,255,255,0.25); }
 }
 
 .social-login {
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .social-button {
-  --border-color: rgba(255, 255, 255, 0.3);
+  --border-color: rgba(255,255,255,0.3);
   --color: white;
   --background: transparent;
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
   font-weight: bold;
-  
-  &:hover {
-    --border-color: rgba(255, 255, 255, 0.6);
-    --background: rgba(255, 255, 255, 0.1);
-  }
+  &:hover { --border-color: rgba(255,255,255,0.6); --background: rgba(255,255,255,0.1); }
 }
 
 .bottom-section {
   margin-top: auto;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .have-account-text {
   text-align: center;
-  margin-bottom: 20px;
-  
-  ion-text {
-    font-size: 14px;
-    --color: #cccccc;
-  }
+  margin-bottom: 16px;
+  ion-text { font-size: 14px; --color: #ccc; }
 }
 
-.login-button {
-  --border-color: rgba(255, 255, 255, 0.3);
-  --color: white;
-  --background: rgba(255, 255, 255, 0.15);
-  --border-radius: 8px;
-  height: 50px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  backdrop-filter: blur(10px);
-  
-  &:hover {
-    --background: rgba(255, 255, 255, 0.25);
-  }
+ion-content { --padding-start: 0; --padding-end: 0; --padding-top: 0; --padding-bottom: 0; }
+ion-item { --padding-start: 0; --inner-padding-end: 0; }
+::-webkit-scrollbar { display: none; }
+ion-content { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media (max-height: 600px) {
+  .register-container { padding: 100px 24px 0; }
+  .form-section { padding: 15px 0 10px; }
+  .input-item { margin-bottom: 16px; --min-height: 44px; }
+  .terms-text { margin: 12px 0 16px; ion-text { font-size: 11px; } }
+  .register-button, .login-button { height: 44px; }
+  .register-button { margin: 0 0 16px; }
+  .social-login { margin-bottom: 16px; gap: 30px; }
+  .social-button { width: 44px; height: 44px; font-size: 16px; }
+  .bottom-section { padding-bottom: 16px; }
+  .have-account-text { margin-bottom: 12px; }
+  .custom-header ion-title { font-size: 16px; }
 }
 
-/* Global overrides for Ionic components */
-ion-content {
-  --padding-start: 0;
-  --padding-end: 0;
-  --padding-top: 0;
-  --padding-bottom: 0;
+@media (max-height: 700px) and (min-height: 601px) {
+  .register-container { padding-top: 110px; }
+  .form-section { padding: 20px 0 15px; }
+  .input-item { margin-bottom: 18px; --min-height: 46px; }
+  .terms-text { margin: 14px 0 20px; }
+  .register-button, .login-button { height: 46px; }
+  .register-button { margin: 0 0 18px; }
+  .social-login { margin-bottom: 18px; gap: 35px; }
+  .social-button { width: 46px; height: 46px; }
+  .bottom-section { padding-bottom: 18px; }
+  .have-account-text { margin-bottom: 14px; }
 }
 
-ion-item {
-  --padding-start: 0;
-  --inner-padding-end: 0;
+@media (min-height: 801px) {
+  .form-section { padding: 30px 0 20px; }
+  .input-item { margin-bottom: 24px; --min-height: 50px; }
+  .terms-text { margin: 20px 0 30px; ion-text { font-size: 13px; } }
+  .register-button, .login-button { height: 50px; }
+  .register-button { margin: 0 0 30px; }
+  .social-login { margin-bottom: 30px; }
+  .social-button { width: 50px; height: 50px; font-size: 20px; }
+  .bottom-section { padding-bottom: 30px; }
+  .have-account-text { margin-bottom: 20px; }
 }
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  display: none;
+@media (max-width: 320px) {
+  .register-container { padding-left: 20px; padding-right: 20px; }
+  .custom-header ion-title { font-size: 14px; }
+  .social-login { gap: 25px; }
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-ion-content {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@media (orientation: landscape) and (max-height: 500px) {
+  .register-container { padding-top: 80px; }
+  .form-section { padding: 10px 0 5px; }
+  .input-item { margin-bottom: 12px; --min-height: 40px; }
+  .terms-text { margin: 8px 0 12px; ion-text { font-size: 10px; } }
+  .register-button, .login-button { height: 40px; }
+  .register-button { margin: 0 0 12px; }
+  .social-login { margin-bottom: 12px; gap: 25px; }
+  .social-button { width: 40px; height: 40px; font-size: 14px; }
+  .bottom-section { padding-bottom: 10px; }
+  .have-account-text { margin-bottom: 8px; }
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-height: 700px) {
-  .form-section {
-    padding: 10px 0;
-  }
-  
-  .input-item {
-    margin-bottom: 20px;
-    --min-height: 45px;
-  }
-  
-  .terms-text {
-    margin: 15px 0 25px 0;
-  }
-  
-  .register-button {
-    margin: 0 0 30px 0;
-  }
-  
-  .social-login {
-    margin-bottom: 30px;
-  }
+@supports (padding-top: env(safe-area-inset-top)) {
+  .register-container { padding-top: calc(120px + env(safe-area-inset-top)); }
+  @media (max-height: 600px) { .register-container { padding-top: calc(100px + env(safe-area-inset-top)); } }
+  @media (orientation: landscape) and (max-height: 500px) { .register-container { padding-top: calc(80px + env(safe-area-inset-top)); } }
 }

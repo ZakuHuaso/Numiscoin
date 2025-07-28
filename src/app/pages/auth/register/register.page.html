@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button
         defaultHref="/auth/login"
-        text="Volver"
+        text=""
         class="back-button"
       ></ion-back-button>
     </ion-buttons>
@@ -15,25 +15,25 @@
   <div class="register-container">
     <div class="form-section">
       <ion-item lines="none" class="input-item">
-        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-icon  slot="start"></ion-icon>
         <ion-input placeholder="Nombre" type="text" class="custom-input">
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
-        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-icon slot="start"></ion-icon>
         <ion-input placeholder="Apellido" type="text" class="custom-input">
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
-        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-icon slot="start"></ion-icon>
         <ion-input placeholder="Email" type="email" class="custom-input">
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
-        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-icon slot="start"></ion-icon>
         <ion-input
           placeholder="Contraseña"
           type="password"
@@ -43,7 +43,7 @@
       </ion-item>
 
       <ion-item lines="none" class="input-item">
-        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-icon slot="start"></ion-icon>
         <ion-input
           placeholder="Repetir Contraseña"
           type="password"
@@ -58,7 +58,7 @@
         </ion-text>
       </div>
 
-      <ion-button expand="block" class="register-button">
+      <ion-button expand="block" class="register-button" (click)="submitRegister()">
         CREAR CUENTA
       </ion-button>
     </div>
@@ -68,7 +68,7 @@
         <ion-text color="medium"> ¿Ya tienes una cuenta? </ion-text>
       </div>
 
-      <ion-button expand="block" fill="outline" class="login-button">
+      <ion-button expand="block" fill="outline" class="login-button" (click)="goBack()">
         INICIAR SESIÓN
       </ion-button>
     </div>
