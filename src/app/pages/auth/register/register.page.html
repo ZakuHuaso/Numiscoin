@@ -1,9 +1,11 @@
 <ion-header [translucent]="true" class="custom-header">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button fill="clear">
-        <ion-icon name="arrow-back" color="light"></ion-icon>
-      </ion-button>
+      <ion-back-button
+        defaultHref="/auth/login"
+        text="Volver"
+        class="back-button"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>REGISTRARSE</ion-title>
   </ion-toolbar>
@@ -11,50 +13,42 @@
 
 <ion-content [fullscreen]="true" class="register-content">
   <div class="register-container">
-    
     <div class="form-section">
       <ion-item lines="none" class="input-item">
         <ion-icon name="person-outline" slot="start"></ion-icon>
-        <ion-input 
-          placeholder="Nombre"
-          type="text"
-          class="custom-input">
+        <ion-input placeholder="Nombre" type="text" class="custom-input">
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
         <ion-icon name="person-outline" slot="start"></ion-icon>
-        <ion-input 
-          placeholder="Apellido"
-          type="text"
-          class="custom-input">
+        <ion-input placeholder="Apellido" type="text" class="custom-input">
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
         <ion-icon name="mail-outline" slot="start"></ion-icon>
-        <ion-input 
-          placeholder="Email"
-          type="email"
-          class="custom-input">
+        <ion-input placeholder="Email" type="email" class="custom-input">
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
         <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-        <ion-input 
+        <ion-input
           placeholder="Contraseña"
           type="password"
-          class="custom-input">
+          class="custom-input"
+        >
         </ion-input>
       </ion-item>
 
       <ion-item lines="none" class="input-item">
         <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-        <ion-input 
+        <ion-input
           placeholder="Repetir Contraseña"
           type="password"
-          class="custom-input">
+          class="custom-input"
+        >
         </ion-input>
       </ion-item>
 
@@ -64,27 +58,19 @@
         </ion-text>
       </div>
 
-      <ion-button 
-        expand="block" 
-        class="register-button">
+      <ion-button expand="block" class="register-button">
         CREAR CUENTA
       </ion-button>
     </div>
 
     <div class="bottom-section">
       <div class="have-account-text">
-        <ion-text color="medium">
-          ¿Ya tienes una cuenta?
-        </ion-text>
+        <ion-text color="medium"> ¿Ya tienes una cuenta? </ion-text>
       </div>
-      
-      <ion-button 
-        expand="block" 
-        fill="outline" 
-        class="login-button">
+
+      <ion-button expand="block" fill="outline" class="login-button">
         INICIAR SESIÓN
       </ion-button>
     </div>
-
   </div>
 </ion-content>
