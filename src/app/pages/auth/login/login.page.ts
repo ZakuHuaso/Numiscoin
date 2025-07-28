@@ -43,9 +43,14 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/auth/register']);
   }
 
+  // Navigation to Forgot Password page
+  onForgotPassword() {
+    this.router.navigate(['/auth/reset-password']);
+  }
+
   // Navigation to Home page after login
   onLogin() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['pages/home']);
   }
 
 }

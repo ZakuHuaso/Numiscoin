@@ -30,14 +30,15 @@
       </ion-item>
 
       <div class="forgot-password">
-        <ion-text color="medium">
-          ¿Olvidaste tu contraseña? Haz click Aquí
+        <ion-text>
+          ¿Olvidaste tu contraseña? Haz click <span class="link-text" (click)="onForgotPassword()">Aquí</span>
         </ion-text>
       </div>
 
       <ion-button 
         expand="block" 
-        class="continue-button">
+        class="continue-button"
+        (click)="onLogin()">
         CONTINUAR
       </ion-button>
 
@@ -46,13 +47,13 @@
           fill="outline" 
           shape="round" 
           class="social-button">
-          f
+          <img src="assets/icon/logo-facebook.svg" alt="" class="social-icon" slot="icon-only">
         </ion-button>
         <ion-button 
           fill="outline" 
           shape="round" 
           class="social-button">
-          G+
+          <img src="assets/icon/logo-google.svg" alt="" class="social-icon" slot="icon-only">
         </ion-button>
       </div>
     </div>
