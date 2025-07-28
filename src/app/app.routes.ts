@@ -21,4 +21,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/auth/auth.routes').then((m) => m.routes),
   },
+  {
+    path: 'pages/home',
+    loadComponent: () =>
+      import('./pages/home/home.page').then((m) => m.HomePage),
+  },
 ];
