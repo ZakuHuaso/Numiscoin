@@ -8,7 +8,6 @@ import {
   IonTitle,
   IonButton,
   IonInput,
-  IonButtons,
   IonItem,
   IonText,
   IonIcon,
@@ -27,7 +26,6 @@ import {
     IonToolbar,
     IonButton,
     IonInput,
-    IonButtons,
     IonItem,
     IonText,
     IonIcon,
@@ -40,10 +38,12 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
+  // Navigation to Register page
   onRegister() {
     this.router.navigate(['/auth/register']);
   }
 
+  // Navigation to Home page after login
   onLogin() {
     this.router.navigate(['/home']);
   }
