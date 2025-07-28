@@ -131,8 +131,12 @@ npm -v # Debería ser "10.9.2".
 npm install -g @ionic/cli@7.2.0
 ```
 
+### Swiper
+```bash
+npm install swiper@latest
+```
 
-## Ejectuar
+## Ejecutar
 
 Siga las siguientes instrucciones:
 
