@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   IonContent,
   IonHeader,
@@ -35,10 +36,16 @@ import {
   ],
 })
 export class LoginPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
+  onRegister() {
+    this.router.navigate(['/auth/register']);
+  }
 
+  onLogin() {
+    this.router.navigate(['/home']);
+  }
 
 }
