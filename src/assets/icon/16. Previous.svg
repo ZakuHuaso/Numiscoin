@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff3d6;
+      }
+    </style>
+  </defs>
+  <g id="_16._Previous" data-name="16. Previous" transform="translate(0 24) rotate(-90)">
+    <path id="Trazado_56" data-name="Trazado 56" class="cls-1" d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm2.64,16.232a1,1,0,1,1-1.28,1.536l-6-5a1,1,0,0,1,0-1.536l6-5a1,1,0,1,1,1.28,1.536L9.562,12Z"/>
+  </g>
+</svg>

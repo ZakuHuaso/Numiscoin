@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff3d6;
+      }
+
+      .cls-2 {
+        fill: #2d3330;
+      }
+    </style>
+  </defs>
+  <g id="_" data-name="+" transform="translate(-278 -86)">
+    <circle id="Ellipse_96" data-name="Ellipse 96" class="cls-1" cx="20" cy="20" r="20" transform="translate(278 86)"/>
+    <g id="_2" data-name="+" transform="translate(290 98)">
+      <g id="Union_1" data-name="Union 1" transform="translate(4620)">
+        <rect id="Rectangle_2" data-name="Rectangle 2" class="cls-2" width="2" height="16" transform="translate(-4613)"/>
+        <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-2" width="2" height="16" transform="translate(-4604 7) rotate(90)"/>
+      </g>
+    </g>
+  </g>
+</svg>

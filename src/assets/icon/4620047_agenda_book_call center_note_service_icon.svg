@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.732" height="21.33" viewBox="0 0 22.732 21.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff3d6;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="_4620047_agenda_book_call_center_note_service_icon" data-name="4620047_agenda_book_call center_note_service_icon" transform="translate(0 0.009)">
+    <path id="Trazado_1" data-name="Trazado 1" class="cls-1" d="M4,3.577V1H22.659V20.33H4V17.753" transform="translate(-0.927 -0.009)"/>
+    <path id="Trazado_2" data-name="Trazado 2" class="cls-1" d="M3.073,5h.691A1.338,1.338,0,0,1,5.146,6.289,1.338,1.338,0,0,1,3.764,7.577H2.382A1.338,1.338,0,0,1,1,6.289a1.247,1.247,0,0,1,.408-.909A1.434,1.434,0,0,1,2.382,5Z" transform="translate(0 -1.431)"/>
+    <path id="Trazado_3" data-name="Trazado 3" class="cls-1" d="M3.073,14h.691a1.292,1.292,0,1,1,0,2.577H2.382A1.338,1.338,0,0,1,1,15.289a1.247,1.247,0,0,1,.408-.909A1.434,1.434,0,0,1,2.382,14Z" transform="translate(0 -4.632)"/>
+    <path id="Trazado_4" data-name="Trazado 4" class="cls-1" d="M3.073,23h.691a1.292,1.292,0,1,1,0,2.577H2.382A1.338,1.338,0,0,1,1,24.289a1.247,1.247,0,0,1,.408-.909A1.434,1.434,0,0,1,2.382,23Z" transform="translate(0 -7.833)"/>
+    <line id="Línea_1" data-name="Línea 1" class="cls-1" y2="20" transform="translate(8 0.522)"/>
+    <line id="Línea_2" data-name="Línea 2" class="cls-1" y2="4" transform="translate(3 5.522)"/>
+    <line id="Línea_3" data-name="Línea 3" class="cls-1" y2="4" transform="translate(3 11.522)"/>
+    <line id="Línea_4" data-name="Línea 4" class="cls-1" x2="10" transform="translate(10 15.522)"/>
+    <line id="Línea_5" data-name="Línea 5" class="cls-1" x2="10" transform="translate(10 17.522)"/>
+  </g>
+</svg>

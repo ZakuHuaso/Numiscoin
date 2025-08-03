@@ -1,0 +1,13 @@
+<svg id="Add" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff3d6;
+      }
+    </style>
+  </defs>
+  <g id="Union_1" data-name="Union 1" transform="translate(4620)">
+    <rect id="Rectangle_2" data-name="Rectangle 2" class="cls-1" width="2" height="16" transform="translate(-4613)"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-1" width="2" height="16" transform="translate(-4604 7) rotate(90)"/>
+  </g>
+</svg>
