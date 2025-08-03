@@ -1,0 +1,150 @@
+:host {
+  ion-header {
+    ion-toolbar {
+      --background: #1e282d; // Dark background for header
+      --color: #ffffff; // White text color for header
+
+      ion-title {
+        text-align: center;
+        font-weight: bold;
+      }
+
+      ion-back-button {
+        --color: #ffffff;
+      }
+    }
+  }
+
+  ion-content {
+    --background: #1e282d; // Dark background for content
+
+    .calculator-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 20px;
+      justify-content: space-between;
+    }
+
+    .display {
+      background: #36413d; // Dark green background for display
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: right;
+      color: #ffffff; // White text
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 150px; // Adjust height as needed for display area
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+
+      .expression {
+        font-size: 1.2em;
+        opacity: 0.7;
+        margin-bottom: 5px;
+      }
+
+      .result {
+        font-size: 2.5em;
+        font-weight: bold;
+      }
+    }
+
+    .buttons-grid {
+      width: 100%;
+      flex-grow: 1; // Allow the grid to take available space
+      display: flex;
+      flex-direction: column;
+      justify-content: center; // Center the rows vertically
+
+      ion-row {
+        margin-bottom: 10px; // Space between rows
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      ion-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px; // Space around buttons
+      }
+
+      .calc-button {
+        --background: #36413d; // Default button background
+        --background-activated: #4a5a54; // Button pressed state
+        --color: #ffffff; // Default text color
+        font-size: 1.5em;
+        width: 100%;
+        height: 60px; // Fixed height for buttons
+        border-radius: 15px; // Rounded corners for buttons
+        --box-shadow: none; // Remove default Ionic button shadow
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+      }
+
+      .special-button {
+        --background: #4a5a54; // Slightly lighter green for special buttons
+      }
+
+      .action-button {
+        --background: #5d6d67; // Even lighter green for action buttons
+        ion-icon {
+          font-size: 1.5em;
+        }
+      }
+
+      .operator-button {
+        --background: #5d6d67; // Lighter green for operator buttons
+      }
+
+      .plus-button {
+        height: calc(100% + 10px); // Make the plus button span two rows visually if needed, though column span handles it in HTML
+        align-self: stretch; // Allows the button to stretch vertically in its col
+        margin-top: -5px; // Adjust if needed
+        margin-bottom: -5px; // Adjust if needed
+      }
+
+      .zero-button {
+        width: calc(200% + 10px); // Make the zero button span two columns visually
+        border-radius: 15px;
+      }
+
+      .equals-button {
+        --background: #90d36c; // Green for equals button
+        --color: #1e282d; // Dark text for equals button
+      }
+    }
+  }
+
+  ion-footer {
+    ion-toolbar {
+      --background: #1e282d; // Dark background for footer
+
+      ion-tab-bar {
+        --background: #1e282d; // Dark background for tab bar
+        --border: none; // No border at the top of the tab bar
+
+        ion-tab-button {
+          --color: #a0a0a0; // Grey color for inactive tabs
+          --color-selected: #ffffff; // White color for active tab
+          --ripple-color: transparent; // No ripple effect
+
+          ion-icon {
+            font-size: 1.4em;
+          }
+
+          ion-label {
+            font-size: 0.7em;
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+  }
+}

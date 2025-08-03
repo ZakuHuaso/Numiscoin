@@ -50,12 +50,12 @@ export const routes: Routes = [
               ),
           },
         ],
-      } /*
+      },
       {
-        path: 'profile',
+        path: 'calculator',
         loadComponent: () =>
-          import('../profile/profile.page').then((m) => m.ProfilePage),
-      }, */,
+          import('../calculator/calculator.page').then((m) => m.CalculatorPage),
+      }, 
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
