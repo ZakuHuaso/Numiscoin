@@ -1,20 +1,111 @@
-<ion-header [translucent]="true">
+<ion-header class="custom-header">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="navigateToSettings()">
+        <ion-icon src="assets/icon/Settings.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Logo center -->
+    <ion-title class="logo-title">
+      <img
+        src="assets/icon/Capa-1.svg"
+        alt="Numiscoin Logo"
+        class="logo-image"
+      />
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="navigateToProfile()">
+        <ion-icon src="assets/icon/Profile-1.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="home-content">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+  <!-- Search Bar -->
+  <div class="search-section">
+    <ion-searchbar
+      placeholder="Buscar..."
+      class="custom-searchbar"
+      (ionInput)="onSearch($event)"
+    >
+    </ion-searchbar>
   </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-section">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" *ngFor="let stat of statistics">
+          <div class="stat-card">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- Upcoming Events Section -->
+  <div class="events-section">
+    <div class="section-header">
+      <h2>Próximos eventos</h2>
+    </div>
+
+    <swiper-container
+      slides-per-view="1.2"
+      space-between="16"
+      pagination="true"
+      pagination-clickable="true"
+      class="events-swiper"
+    >
+      <swiper-slide *ngFor="let event of upcomingEvents">
+        <div class="event-card">
+          <div class="event-image-container">
+            <img [src]="event.image" [alt]="event.title" class="event-image" />
+            <div class="event-overlay">
+              <div class="event-category">{{ event.category }}</div>
+              <div class="event-content">
+                <h3 class="event-title">{{ event.title }}</h3>
+                <p class="event-subtitle">{{ event.subtitle }}</p>
+              </div>
+              <div class="bookmark-icon">
+                <ion-icon name="bookmark-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <!-- Recent Items Section -->
+  <div class="recent-section">
+    <div class="section-header">
+      <h2>Recientes</h2>
+    </div>
+
+    <swiper-container
+      slides-per-view="1.5"
+      space-between="16"
+      class="recent-swiper"
+    >
+      <swiper-slide *ngFor="let item of recentItems">
+        <div class="recent-card">
+          <div class="recent-image-container">
+            <img [src]="item.image" [alt]="item.title" class="recent-image" />
+          </div>
+          <div class="recent-content">
+            <h3 class="recent-title">{{ item.title }}</h3>
+            <p class="recent-subtitle">{{ item.subtitle }}</p>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
 </ion-content>
