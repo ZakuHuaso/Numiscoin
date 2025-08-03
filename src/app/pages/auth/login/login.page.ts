@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
 
   // Navigation to Home page after login
   onLogin() {
-    this.router.navigate(['pages/home']);
+    this.router.navigate(['tabs/home']);
   }
 
 }
