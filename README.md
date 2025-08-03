@@ -14,7 +14,7 @@ Una aplicación móvil multiplataforma diseñada para coleccionistas numismátic
 ## ✨ Características principales 
  
 ### 👤 Gestión de usuarios
-- Registro e inicio de sesión con correo electrónico, Google o Apple
+- Registro e inicio de sesión con correo electrónico
 - Recuperación de contraseña
 - Mantener sesión activa entre paginas o al reiniciar la aplicación
 
@@ -83,8 +83,6 @@ Una aplicación móvil multiplataforma diseñada para coleccionistas numismátic
 | **Capacitor**     | API nativa para ejecutar en Android/iOS         |
 | **Node.js**     | Entorno de ejecución para herramientas y scripts |
 | **npm**            | Gestor de dependencias                          |
-| **Firebase**       | Plataforma backend como servicio para autenticación, notificaciones, y más |
-| **Firestore**      | Base de datos NoSQL en tiempo real, parte de Firebase |
 
 
 ## 🚀 Pre-requisitos
