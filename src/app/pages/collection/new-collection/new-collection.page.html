@@ -1,13 +1,145 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="custom-header">
   <ion-toolbar>
-    <ion-title>new-collection</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/collection"
+        text=""
+        class="back-button"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>NUEVA COLECCIÓN</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">new-collection</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="new-collection-content">
+  <div class="content-container">
+    <form class="collection-form">
+      <!-- Photo Upload Section -->
+      <div class="photo-section">
+        <div class="photo-container" (click)="selectPhoto()">
+          <div class="photo-placeholder" *ngIf="!selectedPhoto">
+            <ion-icon name="camera-outline"></ion-icon>
+            <p>Agregar Foto</p>
+          </div>
+          <img
+            *ngIf="selectedPhoto"
+            [src]="selectedPhoto"
+            alt="Collection photo"
+            class="selected-photo"
+          />
+          <div class="photo-overlay" *ngIf="selectedPhoto">
+            <ion-icon name="camera-outline"></ion-icon>
+          </div>
+        </div>
+        <input
+          type="file"
+          #fileInput
+          accept="image/*"
+          (change)="onPhotoSelected($event)"
+          style="display: none"
+        />
+      </div>
+
+      <!-- Form Fields -->
+      <div class="form-fields">
+        <!-- Title Field -->
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Título *</ion-label>
+          <ion-input
+            [(ngModel)]="formData.title"
+            name="title"
+            placeholder="Nombre de la colección"
+            class="custom-input"
+            maxlength="50"
+          >
+          </ion-input>
+        </ion-item>
+
+        <!-- Description Field -->
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea
+            [(ngModel)]="formData.description"
+            name="description"
+            placeholder="Describe tu colección..."
+            rows="3"
+            maxlength="200"
+            class="custom-textarea"
+          >
+          </ion-textarea>
+        </ion-item>
+
+        <!-- Country Field -->
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">País *</ion-label>
+          <ion-select
+            [(ngModel)]="formData.country"
+            name="country"
+            placeholder="Selecciona un país"
+            class="custom-select"
+          >
+            <ion-select-option value="argentina">Argentina</ion-select-option>
+            <ion-select-option value="brasil">Brasil</ion-select-option>
+            <ion-select-option value="chile">Chile</ion-select-option>
+            <ion-select-option value="colombia">Colombia</ion-select-option>
+            <ion-select-option value="espana">España</ion-select-option>
+            <ion-select-option value="mexico">México</ion-select-option>
+            <ion-select-option value="peru">Perú</ion-select-option>
+            <ion-select-option value="uruguay">Uruguay</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Type Field -->
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Tipo *</ion-label>
+          <ion-select
+            [(ngModel)]="formData.type"
+            name="type"
+            placeholder="Selecciona el tipo"
+            class="custom-select"
+          >
+            <ion-select-option value="monedas">Monedas</ion-select-option>
+            <ion-select-option value="billetes">Billetes</ion-select-option>
+            <ion-select-option value="fichas">Fichas</ion-select-option>
+            <ion-select-option value="documentos">Documentos</ion-select-option>
+            <ion-select-option value="medallas">Medallas</ion-select-option>
+            <ion-select-option value="sellos">Sellos</ion-select-option>
+            <ion-select-option value="mixta">Mixta</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <ion-button
+          expand="block"
+          class="create-button"
+          [disabled]="!isFormValid"
+          (click)="createCollection()"
+        >
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+          Crear Colección
+        </ion-button>
+      </div>
+    </form>
+  </div>
 </ion-content>
+
+<!-- Loading Overlay -->
+<ion-loading
+  [isOpen]="isLoading"
+  message="Creando colección..."
+  spinner="crescent"
+>
+</ion-loading>
+
+<!-- Toast for notifications -->
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [duration]="3000"
+  [color]="toastColor"
+  position="top"
+  (didDismiss)="showToast = false"
+>
+</ion-toast>
