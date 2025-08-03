@@ -1,13 +1,105 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="custom-header">
   <ion-toolbar>
-    <ion-title>collection</ion-title>
+    <ion-title class="ion-text-center">MI COLECCIÓN</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" shape="round" class="add-button" (click)="navigateToNewCollection()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">collection</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="collection-content">
+  <div class="content-container">
+    
+    <!-- Recent Items Card with Skeleton -->
+    <ion-card class="recent-card">
+      <ion-card-header>
+        <div class="recent-header">
+          <ion-card-title>RECIENTES</ion-card-title>
+          <div class="recent-time">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>1h atrás</span>
+          </div>
+        </div>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <!-- Skeleton Loading State -->
+        <div class="coin-display" *ngIf="isLoading">
+          <div class="skeleton-coin-image"></div>
+          <div class="skeleton-title"></div>
+          <div class="skeleton-description"></div>
+          <div class="skeleton-description short"></div>
+        </div>
+        
+        <!-- Actual Content -->
+        <div class="coin-display" *ngIf="!isLoading && recentItem">
+          <img 
+            [src]="recentItem.imageUrl" 
+            [alt]="recentItem.title"
+            class="coin-image"
+            (error)="onImageError($event)">
+          <h2 class="coin-title">{{ recentItem.title }}</h2>
+          <p class="coin-description">{{ recentItem.description }}</p>
+        </div>
+        
+        <!-- Empty State -->
+        <div class="coin-display empty-state" *ngIf="!isLoading && !recentItem">
+          <div class="empty-coin-placeholder">
+            <ion-icon name="image-outline"></ion-icon>
+          </div>
+          <h2 class="empty-title">No hay elementos recientes</h2>
+          <p class="empty-description">Agrega tu primera moneda a la colección</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Search Bar -->
+    <div class="search-section">
+      <ion-searchbar 
+        placeholder="Buscar"
+        class="custom-searchbar">
+      </ion-searchbar>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="categories-grid">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" class="category-button" (click)="navigateToCoin()">
+              Monedas
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" class="category-button">
+              Fichas
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" class="category-button">
+              Billetes
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" class="category-button">
+              Documentos
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" class="category-button">
+              Fichas
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" class="category-button">
+              Otros
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
 </ion-content>

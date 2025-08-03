@@ -1,0 +1,238 @@
+.custom-header {
+  --background: transparent;
+  
+  ion-toolbar {
+    --background: transparent;
+    --color: white;
+    
+    ion-title {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-size: 18px;
+    }
+    
+    ion-button {
+      --color: white;
+      --background: transparent;
+    }
+  }
+}
+
+.add-button {
+  --background: rgba(255, 255, 255, 0.9);
+  --color: #2c3e2d;
+  --border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.collection-content {
+  --background: linear-gradient(180deg, #2c3e2d 0%, #1a2e1d 50%, #0d1a0f 100%);
+  --color: white;
+}
+
+.content-container {
+  padding-top: 80px;
+}
+
+.recent-card {
+  --background: rgba(255, 255, 255, 0.1);
+  --color: white;
+  margin: 10px 20px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  ion-card-header {
+    padding-bottom: 10px;
+  }
+  
+  ion-card-content {
+    padding-top: 10px;
+  }
+}
+
+.recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  ion-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+  }
+}
+
+.recent-time {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  
+  ion-icon {
+    margin-right: 6px;
+    font-size: 16px;
+  }
+}
+
+.coin-display {
+  text-align: center;
+}
+
+/* Actual coin image */
+.coin-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.coin-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.coin-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Skeleton Styles */
+.skeleton-coin-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 80%;
+  margin: 0 auto 12px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-description {
+  height: 16px;
+  width: 90%;
+  margin: 0 auto 8px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+  
+  &.short {
+    width: 70%;
+    margin-bottom: 0;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Empty State */
+.empty-state {
+  opacity: 0.7;
+}
+
+.empty-coin-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  
+  ion-icon {
+    font-size: 48px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.empty-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Search and Categories (same as before) */
+.search-section {
+  padding: 0 20px 20px;
+}
+
+.custom-searchbar {
+  --background: rgba(255, 255, 255, 0.9);
+  --color: #333;
+  --placeholder-color: #666;
+  --icon-color: #666;
+  --border-radius: 8px;
+}
+
+.categories-grid {
+  padding: 0 20px 40px;
+}
+
+.category-button {
+  --background: rgba(255, 255, 255, 0.15);
+  --color: white;
+  --border-radius: 12px;
+  height: 80px;
+  font-weight: 600;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 15px;
+  
+  &:hover {
+    --background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 360px) {
+  .content-container {
+    padding-top: 70px;
+  }
+  
+  .coin-image, .skeleton-coin-image, .empty-coin-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+}
