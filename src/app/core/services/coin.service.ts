@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Coin } from '../models/coin.model';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoinService {
-  private baseUrl = 'https://numiscoin.store/api/coins';
+  private baseUrl = `${environment.apiUrl}/coins`;
 
   constructor(private http: HttpClient) {}
 
