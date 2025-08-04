@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>PERFIL</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="profile-container">
+
+    <div class="user-info">
+      <ion-avatar>
+        <div class="avatar-placeholder"></div>
+      </ion-avatar>
+      <div class="user-details">
+        <h1>{{ user.name }}</h1>
+        <p>{{ user.location }}</p>
+      </div>
+      <ion-button fill="clear" class="add-button">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="bio-section">
+      <p>{{ user.bio }}</p>
+      <p>Contáctame en <strong>{{ user.email }}</strong></p>
+    </div>
+
+    <ion-grid class="stats-grid">
+      <ion-row>
+        <ion-col size="4" *ngFor="let stat of stats">
+          <div class="stat-card">
+            <h2>{{ stat.value }}</h2>
+            <p>{{ stat.label }}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>
