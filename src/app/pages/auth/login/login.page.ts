@@ -13,6 +13,7 @@ import {
   IonIcon,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +35,13 @@ import {
   ],
 })
 export class LoginPage implements OnInit {
-  constructor(private router: Router) {}
+  text: string = '';
+  password: string = '';
+
+  constructor(
+    private router: Router,
+    private toastController: ToastController
+  ) {}
 
   ngOnInit() {}
 
@@ -48,9 +55,28 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/auth/reset-password']);
   }
 
-  // Navigation to Home page after login
-  onLogin() {
-    this.router.navigate(['tabs/home']);
+  // Navigation to Home page with hardcoded credentials
+  // This should be replaced with a proper authentication service in production
+  async onLogin() {
+    const enteredEmail = this.text.trim().toLowerCase();
+    const enteredPassword = this.password.trim();
+
+    if (
+      enteredEmail === 'admin@numiscoin.cl' &&
+      enteredPassword === 'admin1234'
+    ) {
+      this.router.navigate(['tabs/home']);
+    } else {
+      await this.presentToast('Correo o contraseña incorrectos', 'danger');
+    }
   }
 
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message,
+      color,
+      duration: 2000,
+    });
+    toast.present();
+  }
 }
