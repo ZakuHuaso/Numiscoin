@@ -1,13 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>collection-filtered</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="onBackClick()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Chile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">collection-filtered</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let coin of coins">
+        <div class="coin-card" (click)="onCoinClick(coin)">
+          <img [src]="baseThumbsUrl + coin.foto1" (error)="onImageError($event)" />
+          <h3>{{ coin.moneda }}</h3>
+          <p>{{ coin.ceca }}</p>
+          <p>{{ coin.valorAdquirido }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadCoins($event)" [disabled]="!hasMore">
+    <ion-infinite-scroll-content loadingSpinner="dots" loadingText="Cargando más monedas..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -4,9 +4,8 @@ import { Observable } from 'rxjs';
 import { Coin } from '../models/coin.model';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoinService {
   private baseUrl = `${environment.apiUrl}/coins`;
@@ -36,5 +35,19 @@ export class CoinService {
   // Eliminar una moneda por ID
   deleteCoin(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete.php?id=${id}`);
+  }
+
+  // Filtrar monedas por pais
+  getCoinsByPais(id_pais: number): Observable<Coin[]> {
+    return this.http.get<Coin[]>(
+      `${this.baseUrl}getByCountry.php?id_pais=${id_pais}`
+    );
+  }
+
+  // Obtener monedas de Chile paginadas
+  getChileCoinsPaginated(page: number) {
+    return this.http.get<Coin[]>(
+      `${this.baseUrl}/getChileCoinsPaginated.php?page=${page}`
+    );
   }
 }

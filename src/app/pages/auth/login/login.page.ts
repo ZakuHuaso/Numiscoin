@@ -35,7 +35,7 @@ import { ToastController } from '@ionic/angular';
   ],
 })
 export class LoginPage implements OnInit {
-  text: string = '';
+  usuario: string = '';
   password: string = '';
 
   constructor(
@@ -58,17 +58,9 @@ export class LoginPage implements OnInit {
   // Navigation to Home page with hardcoded credentials
   // This should be replaced with a proper authentication service in production
   async onLogin() {
-    const enteredEmail = this.text.trim().toLowerCase();
-    const enteredPassword = this.password.trim();
-
-    if (
-      enteredEmail === 'admin@numiscoin.cl' &&
-      enteredPassword === 'admin1234'
-    ) {
       this.router.navigate(['tabs/home']);
-    } else {
-      await this.presentToast('Correo o contraseña incorrectos', 'danger');
-    }
+      await this.presentToast('Credenciales correctas', 'success');
+
   }
 
   async presentToast(message: string, color: string) {

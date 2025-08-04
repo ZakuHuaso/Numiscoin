@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './calculator.page.html',
   styleUrls: ['./calculator.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
 })
 export class CalculatorPage {
   calculatorDisplay: string = ''; // The full expression being built
@@ -17,7 +17,7 @@ export class CalculatorPage {
   private lastInputWasOperator: boolean = false;
   private hasEvaluated: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
   /**
    * Handles button clicks for numbers and operators.
@@ -34,7 +34,8 @@ export class CalculatorPage {
       return;
     }
 
-    if (value === 'Ce') { // New 'Ce' button handling
+    if (value === 'Ce') {
+      // New 'Ce' button handling
       this.clearEntry();
       return;
     }
@@ -59,10 +60,16 @@ export class CalculatorPage {
     // Prevent multiple operators or decimals in a row
     if (isOperator && this.lastInputWasOperator) {
       this.calculatorDisplay = this.calculatorDisplay.slice(0, -1) + value;
-    } else if (value === '.' && this.calculatorDisplay.includes('.') && this.calculatorDisplay.split(/[\+\-\*\/]/).pop()?.includes('.')) {
+    } else if (
+      value === '.' &&
+      this.calculatorDisplay.includes('.') &&
+      this.calculatorDisplay
+        .split(/[\+\-\*\/]/)
+        .pop()
+        ?.includes('.')
+    ) {
       return;
-    }
-    else {
+    } else {
       this.calculatorDisplay += value;
     }
 
@@ -103,7 +110,10 @@ export class CalculatorPage {
 
       if (lastOperatorIndex !== -1) {
         // Clear from the last operator onwards
-        this.calculatorDisplay = this.calculatorDisplay.substring(0, lastOperatorIndex + 1);
+        this.calculatorDisplay = this.calculatorDisplay.substring(
+          0,
+          lastOperatorIndex + 1
+        );
       } else {
         // No operator found, clear the entire display (like Ac)
         this.calculatorDisplay = '';
@@ -138,7 +148,9 @@ export class CalculatorPage {
     }
 
     try {
-      if (['+', '-', '*', '/', '.'].includes(this.calculatorDisplay.slice(-1))) {
+      if (
+        ['+', '-', '*', '/', '.'].includes(this.calculatorDisplay.slice(-1))
+      ) {
         this.calculatorDisplay = this.calculatorDisplay.slice(0, -1);
       }
 

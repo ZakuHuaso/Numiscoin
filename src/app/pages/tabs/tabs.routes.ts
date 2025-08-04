@@ -36,17 +36,10 @@ export const routes: Routes = [
               ),
           },
           {
-            path: 'new-coin',
+            path: 'filtered',
             loadComponent: () =>
-              import('../coin/new-coin/new-coin.page').then(
-                (m) => m.NewCoinPage
-              ),
-          },
-          {
-            path: 'new-collection',
-            loadComponent: () =>
-              import('src/app/pages/collection/new-collection/new-collection.page').then(
-                (m) => m.NewCollectionPage
+              import('../collection/collection-filtered/collection-filtered.page').then(
+                (m) => m.CollectionFilteredPage
               ),
           },
         ],

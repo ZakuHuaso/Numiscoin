@@ -68,7 +68,7 @@ export class CollectionPage {
   }
 
   navigateToNewCollection() {
-    this.router.navigateByUrl('/tabs/collection/new-collection');
+    this.router.navigateByUrl('/new-collection');
   }
 
   navigateToCoin() {

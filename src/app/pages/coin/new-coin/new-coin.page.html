@@ -1,13 +1,306 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>new-coin</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true" class="custom-header">
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/coin" text=""></ion-back-button>
+  </ion-buttons>
+  <ion-title>NUEVA MONEDA</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">new-coin</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="new-coin-content">
+<div class="content-container">
+  
+  <form class="coin-form">
+    
+    <!-- Photo Upload Section -->
+    <div class="photos-section">
+      <h3 class="section-title">IMÁGENES</h3>
+      
+      <div class="photos-container">
+        <!-- Frontal Image -->
+        <div class="photo-upload">
+          <label class="photo-label">Imagen Frontal</label>
+          <div class="photo-container" (click)="selectPhoto('frontal')">
+            <div class="photo-placeholder" *ngIf="!selectedPhotoFrontal">
+              <ion-icon name="camera-outline"></ion-icon>
+              <p>Frontal</p>
+            </div>
+            <img 
+              *ngIf="selectedPhotoFrontal" 
+              [src]="selectedPhotoFrontal" 
+              alt="Coin front"
+              class="selected-photo">
+            <div class="photo-overlay" *ngIf="selectedPhotoFrontal">
+              <ion-icon name="camera-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trasera Image -->
+        <div class="photo-upload">
+          <label class="photo-label">Imagen Trasera</label>
+          <div class="photo-container" (click)="selectPhoto('trasera')">
+            <div class="photo-placeholder" *ngIf="!selectedPhotoTrasera">
+              <ion-icon name="camera-outline"></ion-icon>
+              <p>Trasera</p>
+            </div>
+            <img 
+              *ngIf="selectedPhotoTrasera" 
+              [src]="selectedPhotoTrasera" 
+              alt="Coin back"
+              class="selected-photo">
+            <div class="photo-overlay" *ngIf="selectedPhotoTrasera">
+              <ion-icon name="camera-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input 
+        type="file" 
+        #fileInputFrontal 
+        accept="image/*" 
+        (change)="onPhotoSelected($event, 'frontal')"
+        style="display: none;">
+      
+      <input 
+        type="file" 
+        #fileInputTrasera 
+        accept="image/*" 
+        (change)="onPhotoSelected($event, 'trasera')"
+        style="display: none;">
+    </div>
+
+    <!-- Basic Information -->
+    <div class="form-section">
+      <h3 class="section-title">INFORMACIÓN BÁSICA</h3>
+      
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Nombre Moneda *</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.nombreMoneda"
+          name="nombreMoneda"
+          placeholder="Ej: Peso Chileno, Denario Romano"
+          class="custom-input"
+          maxlength="100" />
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">País *</ion-label>
+        <ion-select 
+          [(ngModel)]="formData.pais"
+          name="pais"
+          placeholder="Selecciona el país"
+          class="custom-select">
+          <ion-select-option value="argentina">Argentina</ion-select-option>
+          <ion-select-option value="bolivia">Bolivia</ion-select-option>
+          <ion-select-option value="brasil">Brasil</ion-select-option>
+          <ion-select-option value="chile">Chile</ion-select-option>
+          <ion-select-option value="colombia">Colombia</ion-select-option>
+          <ion-select-option value="ecuador">Ecuador</ion-select-option>
+          <ion-select-option value="espana">España</ion-select-option>
+          <ion-select-option value="francia">Francia</ion-select-option>
+          <ion-select-option value="italia">Italia</ion-select-option>
+          <ion-select-option value="mexico">México</ion-select-option>
+          <ion-select-option value="peru">Perú</ion-select-option>
+          <ion-select-option value="portugal">Portugal</ion-select-option>
+          <ion-select-option value="reino-unido">Reino Unido</ion-select-option>
+          <ion-select-option value="uruguay">Uruguay</ion-select-option>
+          <ion-select-option value="venezuela">Venezuela</ion-select-option>
+          <ion-select-option value="roma-antigua">Roma Antigua</ion-select-option>
+          <ion-select-option value="grecia-antigua">Grecia Antigua</ion-select-option>
+          <ion-select-option value="otros">Otros</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Año *</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.ano"
+          name="ano"
+          type="number"
+          placeholder="Ej: 2023, 1950"
+          class="custom-input"
+          min="1"
+          max="2024" />
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Variante</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.variante"
+          name="variante"
+          placeholder="Ej: Tipo A, Error de acuñación"
+          class="custom-input"
+          maxlength="50" />
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Ceca</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.ceca"
+          name="ceca"
+          placeholder="Ej: Santiago, Madrid, Roma"
+          class="custom-input"
+          maxlength="50" />
+      </ion-item>
+    </div>
+
+    <!-- Classification -->
+    <div class="form-section">
+      <h3 class="section-title">CLASIFICACIÓN</h3>
+      
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Tipo *</ion-label>
+        <ion-select 
+          [(ngModel)]="formData.tipo"
+          name="tipo"
+          placeholder="Selecciona el tipo"
+          class="custom-select">
+          <ion-select-option value="moneda-corriente">Moneda Corriente</ion-select-option>
+          <ion-select-option value="moneda-conmemorativa">Moneda Conmemorativa</ion-select-option>
+          <ion-select-option value="moneda-oro">Moneda de Oro</ion-select-option>
+          <ion-select-option value="moneda-plata">Moneda de Plata</ion-select-option>
+          <ion-select-option value="moneda-cobre">Moneda de Cobre</ion-select-option>
+          <ion-select-option value="moneda-niquel">Moneda de Níquel</ion-select-option>
+          <ion-select-option value="otros">Otros</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Estado *</ion-label>
+        <ion-select 
+          [(ngModel)]="formData.estado"
+          name="estado"
+          placeholder="Selecciona el estado"
+          class="custom-select">
+          <ion-select-option value="pobre">Pobre (P)</ion-select-option>
+          <ion-select-option value="regular">Regular (R)</ion-select-option>
+          <ion-select-option value="bueno">Bueno (B)</ion-select-option>
+          <ion-select-option value="muy-bueno">Muy Bueno (MB)</ion-select-option>
+          <ion-select-option value="fino">Fino (F)</ion-select-option>
+          <ion-select-option value="muy-fino">Muy Fino (MF)</ion-select-option>
+          <ion-select-option value="extremadamente-fino">Extremadamente Fino (EF)</ion-select-option>
+          <ion-select-option value="sin-circular">Sin Circular (SC)</ion-select-option>
+          <ion-select-option value="proof">Proof</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Diseñador/Grabador</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.disenadorGrabador"
+          name="disenadorGrabador"
+          placeholder="Nombre del diseñador o grabador"
+          class="custom-input"
+          maxlength="100" />
+      </ion-item>
+    </div>
+
+    <!-- Production & Values -->
+    <div class="form-section">
+      <h3 class="section-title">PRODUCCIÓN Y VALORES</h3>
+      
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Total Producido</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.totalProducido"
+          name="totalProducido"
+          type="number"
+          placeholder="Cantidad total producida"
+          class="custom-input"
+          min="0" />
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Valor Comercial ($)</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.valorComercial"
+          name="valorComercial"
+          type="number"
+          placeholder="Valor actual en el mercado"
+          class="custom-input"
+          min="0"
+          step="0.01" />
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Valor Adquirido ($)</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.valorAdquirido"
+          name="valorAdquirido"
+          type="number"
+          placeholder="Precio pagado por la moneda"
+          class="custom-input"
+          min="0"
+          step="0.01" />
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Valor sin Circular ($)</ion-label>
+        <ion-input 
+          [(ngModel)]="formData.valorSinCircular"
+          name="valorSinCircular"
+          type="number"
+          placeholder="Valor en estado sin circular"
+          class="custom-input"
+          min="0"
+          step="0.01" />
+      </ion-item>
+    </div>
+
+    <!-- Additional Information -->
+    <div class="form-section">
+      <h3 class="section-title">INFORMACIÓN ADICIONAL</h3>
+      
+      <ion-item lines="none" class="form-item">
+        <ion-label position="stacked">Observaciones</ion-label>
+        <ion-textarea 
+          [(ngModel)]="formData.observaciones"
+          name="observaciones"
+          placeholder="Notas adicionales, historia, características especiales..."
+          rows="4"
+          maxlength="500" />
+      </ion-item>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <ion-button 
+        expand="block" 
+        class="create-button"
+        [disabled]="!isFormValid">
+        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+        Agregar Moneda
+      </ion-button>
+    </div>
+
+  </form>
+
+</div>
 </ion-content>
+
+<!-- Action Sheet for Photo Selection -->
+<ion-action-sheet
+[isOpen]="showActionSheet"
+header="Seleccionar Imagen"
+[buttons]="actionSheetButtons"
+(didDismiss)="showActionSheet = false">
+</ion-action-sheet>
+
+<!-- Loading Overlay -->
+<ion-loading 
+[isOpen]="isLoading"
+message="Agregando moneda..."
+spinner="crescent">
+</ion-loading>
+
+<!-- Toast for notifications -->
+<ion-toast
+[isOpen]="showToast"
+[message]="toastMessage"
+[duration]="3000"
+[color]="toastColor"
+position="top"
+(didDismiss)="showToast = false">
+</ion-toast>

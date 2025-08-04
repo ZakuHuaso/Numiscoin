@@ -1,13 +1,120 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="custom-header">
   <ion-toolbar>
-    <ion-title>coin</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/collection"></ion-back-button>
+    </ion-buttons>
+    <ion-title>MONEDAS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" shape="round" class="add-button" (click)="addCoin()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">coin</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="coins-content">
+  <div class="content-container">
+    
+    <!-- Coins Swiper Section -->
+    <div class="coins-swiper-section">
+      <swiper-container
+        slides-per-view="1.2"
+        space-between="20"
+        centered-slides="true"
+        pagination="true"
+        pagination-clickable="true"
+        class="coins-swiper">
+        
+        <swiper-slide class="coin-slide">
+          <div class="coin-container">
+            <div class="coin-image coin-1"></div>
+          </div>
+        </swiper-slide>
+        
+        <swiper-slide class="coin-slide">
+          <div class="coin-container">
+            <div class="coin-image coin-2"></div>
+          </div>
+        </swiper-slide>
+        
+        <swiper-slide class="coin-slide">
+          <div class="coin-container">
+            <div class="coin-image coin-3"></div>
+          </div>
+        </swiper-slide>
+        
+        <swiper-slide class="coin-slide">
+          <div class="coin-container">
+            <div class="coin-image coin-4"></div>
+          </div>
+        </swiper-slide>
+        
+      </swiper-container>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="categories-section">
+      <h2 class="section-title">CATEGORÍAS</h2>
+      
+      <ion-grid class="categories-grid">
+        <ion-row>
+          <ion-col size="6">
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="category-button"
+              (click)="onSelectCountry(1)">
+              Chile
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="category-button"
+              (click)="goToFilteredCollection(2)">
+              Argentina
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="category-button"
+              (click)="goToFilteredCollection(3)">
+              Brasil
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="category-button"
+              (click)="goToFilteredCollection(4)">
+              Perú
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="category-button"
+                (click)="goToFilteredCollection(5)">
+              Estados Unidos
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="category-button"
+              (click)="goToFilteredCollection(6)">
+              Europa
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
 </ion-content>

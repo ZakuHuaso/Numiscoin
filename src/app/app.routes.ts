@@ -23,15 +23,29 @@ export const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.routes').then((m) => m.routes),
+    loadChildren: () =>
+      import('./pages/tabs/tabs.routes').then((m) => m.routes),
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/profile/profile.page').then( m => m.ProfilePage)
+    loadComponent: () =>
+      import('./pages/profile/profile.page').then((m) => m.ProfilePage),
   },
   {
     path: 'settings',
-    loadComponent: () => import('./pages/settings/settings.page').then( m => m.SettingsPage)
+    loadComponent: () =>
+      import('./pages/settings/settings.page').then((m) => m.SettingsPage),
   },
-
+  {
+    path: 'new-coin',
+    loadComponent: () =>
+      import('./pages/coin/new-coin/new-coin.page').then((m) => m.NewCoinPage),
+  },
+  {
+    path: 'new-collection',
+    loadComponent: () =>
+      import(
+        'src/app/pages/collection/new-collection/new-collection.page'
+      ).then((m) => m.NewCollectionPage),
+  },
 ];

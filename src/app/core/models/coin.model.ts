@@ -20,3 +20,44 @@ export interface Coin {
   orden: number; // Orden de la moneda
   acunada: string; // Indica si la moneda está acuñada
 }
+
+
+export type CoinType =
+  | "moneda-corriente"
+  | "moneda-conmemorativa"
+  | "moneda-oro"
+  | "moneda-plata"
+  | "moneda-cobre"
+  | "moneda-niquel"
+  | "token"
+  | "medalla"
+  | "otros"
+
+export type CoinCondition =
+  | "pobre"
+  | "regular"
+  | "bueno"
+  | "muy-bueno"
+  | "fino"
+  | "muy-fino"
+  | "extremadamente-fino"
+  | "sin-circular"
+  | "proof"
+
+export interface CoinFormData {
+  nombreMoneda: string
+  pais: string
+  ano: number | null // Renamed from 'año'
+  variante: string
+  ceca: string
+  tipo: string
+  estado: string
+  disenadorGrabador: string // Renamed from 'diseñadorGrabador'
+  totalProducido: number | null
+  valorComercial: number | null
+  valorAdquirido: number | null
+  valorSinCircular: number | null
+  observaciones: string
+  imagenFrontal?: File
+  imagenTrasera?: File
+}
