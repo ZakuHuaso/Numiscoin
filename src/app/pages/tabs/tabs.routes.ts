@@ -10,14 +10,14 @@ export const routes: Routes = [
         path: 'home',
         loadComponent: () =>
           import('../home/home.page').then((m) => m.HomePage),
-      } /*
+      },
       {
         path: 'marketplace',
         loadComponent: () =>
           import('../marketplace/marketplace.page').then(
             (m) => m.MarketplacePage
           ),
-      }, */,
+      },
       {
         path: 'collection',
         children: [
@@ -31,16 +31,14 @@ export const routes: Routes = [
           {
             path: 'coin',
             loadComponent: () =>
-              import('../coin/coin.page').then(
-                (m) => m.CoinPage
-              ),
+              import('../coin/coin.page').then((m) => m.CoinPage),
           },
           {
             path: 'filtered',
             loadComponent: () =>
-              import('../collection/collection-filtered/collection-filtered.page').then(
-                (m) => m.CollectionFilteredPage
-              ),
+              import(
+                '../collection/collection-filtered/collection-filtered.page'
+              ).then((m) => m.CollectionFilteredPage),
           },
         ],
       },
@@ -48,7 +46,12 @@ export const routes: Routes = [
         path: 'calculator',
         loadComponent: () =>
           import('../calculator/calculator.page').then((m) => m.CalculatorPage),
-      }, 
+      },
+      {
+        path: 'currencies',
+        loadComponent: () =>
+          import('../currencies/currencies.page').then((m) => m.CurrenciesPage),
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

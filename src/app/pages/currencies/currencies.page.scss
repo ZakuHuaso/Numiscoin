@@ -1,0 +1,74 @@
+.development-content {
+  --background: #7a8b7a;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+
+
+.development-message {
+  // Mensaje al centro de toda la pantalla
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #f5f1e8;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  
+  h2 {
+    color: #f5f1e8;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+// Responsive design using Ionic breakpoints
+@media (max-width: 576px) {
+  .phone-frame {
+    width: 250px;
+    height: 500px;
+  }
+  
+  .phone-screen {
+    width: 230px;
+    height: 480px;
+  }
+  
+  .development-message h2 {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .phone-frame {
+    width: 200px;
+    height: 400px;
+  }
+  
+  .phone-screen {
+    width: 180px;
+    height: 380px;
+  }
+  
+  .development-message h2 {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .development-content {
+    --background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+  }
+}

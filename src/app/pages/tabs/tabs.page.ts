@@ -7,6 +7,7 @@ import {
   apps,
   cart, 
   grid,
+  cash,
   person, homeSharp, calculatorOutline } from 'ionicons/icons';
 
 @Component({
@@ -20,7 +21,7 @@ export class TabsPage  {
   public environmentInjector: EnvironmentInjector = inject(EnvironmentInjector);
 
   constructor() { 
-    addIcons({homeSharp,cart,grid,calculatorOutline,person,apps,});
+    addIcons({homeSharp,cart,grid,calculatorOutline,person,apps,cash});
   }
 
 }
