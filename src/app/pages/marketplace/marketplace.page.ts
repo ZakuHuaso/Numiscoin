@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonText
+} from '@ionic/angular/standalone';
+
+@Component({
+  selector: 'app-marketplace',
+  templateUrl: './marketplace.page.html',
+  styleUrls: ['./marketplace.page.scss'],
+  standalone: true,
+  imports: [
+    IonContent,
+    IonText,
+    CommonModule,
+    FormsModule,
+  ],
+})
+export class MarketplacePage implements OnInit {
+  constructor() {}
+
+  ngOnInit() {}
+}
