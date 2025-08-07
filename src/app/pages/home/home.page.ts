@@ -15,6 +15,7 @@ import {
 } from "@ionic/angular/standalone"
 import { addIcons } from "ionicons"
 import { settingsOutline, personOutline, locationOutline, bookmarkOutline } from "ionicons/icons"
+import { Router } from "@angular/router"
 
 // Register Swiper modules
 import { register } from "swiper/element/bundle"
@@ -43,6 +44,7 @@ register()
 export class HomePage {
   userName = "Guido"
   totalResults = 21
+
 
   statistics = [
     { value: "140", label: "Ventas" },
@@ -89,16 +91,16 @@ export class HomePage {
     },
   ]
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ settingsOutline, personOutline, locationOutline, bookmarkOutline })
   }
 
   navigateToProfile() {
-    console.log("Navigating to Profile Page")
+    this.router.navigate(['/profile'])
   }
 
   navigateToSettings() {
-    console.log("Navigating to Settings Page")
+    this.router.navigate(['/settings'])
   }
 
   onSearch(event: any) {

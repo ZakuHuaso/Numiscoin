@@ -27,16 +27,6 @@ export const routes: Routes = [
       import('./pages/tabs/tabs.routes').then((m) => m.routes),
   },
   {
-    path: 'profile',
-    loadComponent: () =>
-      import('./pages/profile/profile.page').then((m) => m.ProfilePage),
-  },
-  {
-    path: 'settings',
-    loadComponent: () =>
-      import('./pages/settings/settings.page').then((m) => m.SettingsPage),
-  },
-  {
     path: 'new-coin',
     loadComponent: () =>
       import('./pages/coin/new-coin/new-coin.page').then((m) => m.NewCoinPage),
@@ -48,4 +38,5 @@ export const routes: Routes = [
         'src/app/pages/collection/new-collection/new-collection.page'
       ).then((m) => m.NewCollectionPage),
   },
+
 ];
