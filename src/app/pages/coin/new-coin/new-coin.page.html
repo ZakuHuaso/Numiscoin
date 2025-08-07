@@ -269,7 +269,8 @@
       <ion-button 
         expand="block" 
         class="create-button"
-        [disabled]="!isFormValid">
+        [disabled]="!isFormValid"
+        (click)="createCoin()">
         <ion-icon name="add-circle-outline" slot="start"></ion-icon>
         Agregar Moneda
       </ion-button>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Coin } from '../models/coin.model';
 import { environment } from 'src/environments/environment';
@@ -17,6 +17,11 @@ export class CoinService {
     return this.http.get<Coin[]>(`${this.baseUrl}/getAll.php`);
   }
 
+  // Obtener las últimas monedas agregadas (para el slider)
+  getLatestCoins(limit: number = 10): Observable<Coin[]> {
+    return this.http.get<Coin[]>(`${this.baseUrl}/getLatest.php?limit=${limit}`);
+  }
+
   // Obtener una moneda por ID
   getCoinById(id: number): Observable<Coin> {
     return this.http.get<Coin>(`${this.baseUrl}/get_by_id.php?id=${id}`);
@@ -24,7 +29,11 @@ export class CoinService {
 
   // Crear una nueva moneda
   createCoin(coin: Coin): Observable<any> {
-    return this.http.post(`${this.baseUrl}/create.php`, coin);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    
+    return this.http.post(`${this.baseUrl}/create.php`, coin, { headers });
   }
 
   // Actualizar una moneda existente

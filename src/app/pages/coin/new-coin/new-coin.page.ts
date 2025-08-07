@@ -1,6 +1,7 @@
 import { Component, ViewChild, type ElementRef } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { FormsModule } from "@angular/forms"
+import { Router } from "@angular/router"
 import {
   IonContent,
   IonHeader,
@@ -22,7 +23,8 @@ import {
 } from "@ionic/angular/standalone"
 import { addIcons } from "ionicons"
 import { arrowBack, checkmark, cameraOutline, addCircleOutline, camera, images } from "ionicons/icons"
-import type { CoinFormData } from "src/app/core/models/coin.model"
+import type { CoinFormData, Coin } from "src/app/core/models/coin.model"
+import { CoinService } from "src/app/core/services/coin.service"
 
 @Component({
   selector: "app-new-coin",
@@ -102,18 +104,23 @@ export class NewCoinPage {
     },
   ]
 
-  constructor() {
+  constructor(
+    private coinService: CoinService,
+    private router: Router
+  ) {
     addIcons({arrowBack,checkmark,cameraOutline,addCircleOutline,camera,images,});
   }
 
   get isFormValid(): boolean {
-    return !!(
+    const isValid = !!(
       this.formData.nombreMoneda.trim() &&
       this.formData.pais &&
       this.formData.ano && 
       this.formData.tipo &&
       this.formData.estado
     )
+    console.log('Form validation:', isValid, this.formData)
+    return isValid
   }
 
   selectPhoto(type: "frontal" | "trasera") {
@@ -122,10 +129,7 @@ export class NewCoinPage {
   }
 
   takePhoto() {
-    // Implementation for camera capture would go here
-    // For now, we'll simulate with file input
     this.showToastMessage("La función de cámara no está implementada en este demo.", "warning")
-    // this.selectFromGallery() // Uncomment this if you want camera to fall back to gallery
   }
 
   selectFromGallery() {
@@ -139,26 +143,22 @@ export class NewCoinPage {
   onPhotoSelected(event: any, type: "frontal" | "trasera") {
     const file = event.target.files[0]
     if (file) {
-      // Validate file type
       if (!file.type.startsWith("image/")) {
         this.showToastMessage("Por favor selecciona una imagen válida", "danger")
         return
       }
 
-      // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         this.showToastMessage("La imagen debe ser menor a 5MB", "danger")
         return
       }
 
-      // Store file in form data
       if (type === "frontal") {
         this.formData.imagenFrontal = file
       } else {
         this.formData.imagenTrasera = file
       }
 
-      // Create preview URL
       const reader = new FileReader()
       reader.onload = (e) => {
         if (type === "frontal") {
@@ -171,11 +171,122 @@ export class NewCoinPage {
     }
   }
 
-  // Removed createCollection and cancelForm functions as per "Do not create any functions" instruction
-  // However, for a functional app, these would be essential.
-  // I've kept the `showToastMessage` as it's a utility for UI feedback.
+  // Función simplificada para testing
+  async createCoin() {
+    console.log('createCoin() called')
+    console.log('Form data:', this.formData)
+    console.log('Form valid:', this.isFormValid)
+
+    // Test básico - solo mostrar toast
+    this.showToastMessage("Función createCoin ejecutada correctamente", "success")
+
+    if (!this.isFormValid) {
+      this.showToastMessage("Por favor completa todos los campos obligatorios", "danger")
+      return
+    }
+
+    this.isLoading = true
+
+    try {
+      // Preparar datos básicos para la API
+      const coinData = {
+        moneda: this.formData.nombreMoneda,
+        id_pais: this.mapCountryToId(this.formData.pais),
+        familia: "General",
+        id_familia: 1,
+        id_coleccion: 1,
+        ano: this.formData.ano?.toString() || "",
+        variante: this.formData.variante || "",
+        ceca: this.formData.ceca || "",
+        tipo: this.formData.tipo,
+        disenador: this.formData.disenadorGrabador || "",
+        totalProducido: this.formData.totalProducido?.toString() || "0",
+        valorSinCircular: this.formData.valorSinCircular?.toString() || "0",
+        valorComercial: this.formData.valorComercial?.toString() || "0",
+        valorAdquirido: this.formData.valorAdquirido?.toString() || "0",
+        estado: this.formData.estado,
+        observaciones: this.formData.observaciones || "",
+        foto1: "", // Por ahora vacío
+        foto2: "", // Por ahora vacío
+        orden: 0,
+        acunada: "Si"
+      }
+
+      console.log('Sending coin data:', coinData)
+
+      // Llamar al servicio
+      const response = await this.coinService.createCoin(coinData as Coin).toPromise()
+      console.log('API Response:', response)
+      
+      this.showToastMessage("¡Moneda creada exitosamente!", "success")
+      
+      // Limpiar formulario
+      this.resetForm()
+      
+      // Navegar después de 2 segundos
+      setTimeout(() => {
+        this.router.navigate(['/coin'])
+      }, 2000)
+
+    } catch (error) {
+      console.error('Error creating coin:', error)
+      this.showToastMessage(`Error al crear la moneda: ${error}`, "danger")
+    } finally {
+      this.isLoading = false
+    }
+  }
+
+  private mapCountryToId(country: string): number {
+    const countryMap: { [key: string]: number } = {
+      'argentina': 1,
+      'bolivia': 2,
+      'brasil': 3,
+      'chile': 4,
+      'colombia': 5,
+      'ecuador': 6,
+      'espana': 7,
+      'francia': 8,
+      'italia': 9,
+      'mexico': 10,
+      'peru': 11,
+      'portugal': 12,
+      'reino-unido': 13,
+      'uruguay': 14,
+      'venezuela': 15,
+      'roma-antigua': 16,
+      'grecia-antigua': 17,
+      'otros': 18
+    }
+    return countryMap[country] || 18
+  }
+
+  private resetForm() {
+    this.formData = {
+      nombreMoneda: "",
+      pais: "",
+      ano: null,
+      variante: "",
+      ceca: "",
+      tipo: "",
+      estado: "",
+      disenadorGrabador: "",
+      totalProducido: null,
+      valorComercial: null,
+      valorAdquirido: null,
+      valorSinCircular: null,
+      observaciones: "",
+    }
+    this.selectedPhotoFrontal = null
+    this.selectedPhotoTrasera = null
+  }
+
+  cancelForm() {
+    console.log('cancelForm() called')
+    this.router.navigate(['tabs/coin'])
+  }
 
   private showToastMessage(message: string, color: "success" | "danger" | "warning") {
+    console.log('Toast message:', message, color)
     this.toastMessage = message
     this.toastColor = color
     this.showToast = true
