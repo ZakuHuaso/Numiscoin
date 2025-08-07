@@ -16,9 +16,6 @@ import {
   standalone: true,
   imports: [
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     IonText,
     CommonModule,
     FormsModule,
@@ -28,4 +25,5 @@ export class CurrenciesPage implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  
 }
