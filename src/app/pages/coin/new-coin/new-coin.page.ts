@@ -238,24 +238,11 @@ export class NewCoinPage {
 
   private mapCountryToId(country: string): number {
     const countryMap: { [key: string]: number } = {
-      'argentina': 1,
-      'bolivia': 2,
-      'brasil': 3,
-      'chile': 4,
-      'colombia': 5,
-      'ecuador': 6,
-      'espana': 7,
-      'francia': 8,
-      'italia': 9,
-      'mexico': 10,
-      'peru': 11,
-      'portugal': 12,
-      'reino-unido': 13,
-      'uruguay': 14,
-      'venezuela': 15,
-      'roma-antigua': 16,
-      'grecia-antigua': 17,
-      'otros': 18
+      'argentina': 9,
+      'brasil': 26,
+      'chile': 38,
+      'peru': 142,
+      'estados-unidos': 60,
     }
     return countryMap[country] || 18
   }
