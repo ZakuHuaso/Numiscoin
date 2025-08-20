@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CoinService } from 'src/app/core/services/coin.service';
 import { Coin } from 'src/app/core/models/coin.model';
 import { IonicModule } from '@ionic/angular';
@@ -7,51 +8,67 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-collection-filtered',
+  templateUrl: './collection-filtered.page.html',
+  styleUrls: ['./collection-filtered.page.scss'],
   standalone: true,
   imports: [
     CommonModule,    // Para *ngFor, *ngIf
     IonicModule,     // Para los componentes <ion-*>
     RouterModule,    // Si usas routerLink o navegación
   ],
-  templateUrl: './collection-filtered.page.html',
-  styleUrls: ['./collection-filtered.page.scss']
 })
 export class CollectionFilteredPage implements OnInit {
   coins: Coin[] = [];
-  page = 1;
-  isLoading = false;
+  page = 0;
+  limit = 10;
   hasMore = true;
+  idPais!: number;
 
-  baseThumbsUrl = 'https://numiscoin.store/uploads/thumbs/';
-
-  constructor(private coinService: CoinService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private coinService: CoinService
+  ) {}
 
   ngOnInit() {
-    this.loadCoins();
-  }
-
-  loadCoins(event?: any) {
-    if (this.isLoading || !this.hasMore) return;
-
-    this.isLoading = true;
-    this.coinService.getChileCoinsPaginated(this.page).subscribe((data) => {
-      if (data.length < 4) this.hasMore = false;
-      this.coins.push(...data);
-      this.page++;
-      this.isLoading = false;
-      event?.target.complete();
+    // 📌 Tomamos el id_pais desde los query params
+    this.route.queryParams.subscribe(params => {
+      this.idPais = Number(params['id_pais']);
+      
+      if (this.idPais) {
+        this.page = 0;
+        this.coins = [];
+        this.hasMore = true;
+        this.loadCoins();
+      } else {
+        console.warn("⚠️ No se recibió id_pais en la URL");
+      }
     });
   }
 
-  onCoinClick(coin: Coin) {
-    console.log('Clicked coin:', coin);
-  }
+  loadCoins(event?: any) {
+    const offset = this.page * this.limit;
 
-  onImageError(event: any) {
-    event.target.src = '/placeholder.svg';
-  }
+    this.coinService
+      .getCoinsByCountryPaginated(this.idPais, this.limit, offset)
+      .subscribe({
+        next: (newCoins) => {
+          this.coins = [...this.coins, ...newCoins];
+          this.page++;
 
-  onBackClick() {
-    history.back();
+          if (newCoins.length < this.limit) {
+            this.hasMore = false; // ya no hay más monedas
+          }
+
+          if (event) {
+            event.target.complete();
+          }
+        },
+        error: (err) => {
+          console.error('Error al cargar monedas:', err);
+          if (event) {
+            event.target.complete();
+          }
+        },
+      });
   }
 }

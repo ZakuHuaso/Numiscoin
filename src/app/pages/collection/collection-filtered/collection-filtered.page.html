@@ -1,29 +1,30 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="onBackClick()">
-        <ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
+      <ion-back-button defaultHref="/coin"></ion-back-button>
     </ion-buttons>
-    <ion-title>Chile</ion-title>
+    <ion-title>Monedas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let coin of coins">
-        <div class="coin-card" (click)="onCoinClick(coin)">
-          <img [src]="baseThumbsUrl + coin.foto1" (error)="onImageError($event)" />
-          <h3>{{ coin.moneda }}</h3>
-          <p>{{ coin.ceca }}</p>
-          <p>{{ coin.valorAdquirido }}</p>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="coins-content">
+  <div class="coins-grid">
+    <div *ngFor="let coin of coins" class="coin-card">
+      <div class="coin-image">
+        <img [src]="coin.foto1" alt="{{ coin.moneda }}" />
+      </div>
+      <div class="coin-info">
+        <h2>{{ coin.moneda }}</h2>
+        <p class="valor">💰 {{ coin.valorAdquirido || 'N/A' }}</p>
+        <p class="disenador">✍️ {{ coin.disenador || 'Desconocido' }}</p>
+      </div>
+    </div>
+  </div>
 
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadCoins($event)" [disabled]="!hasMore">
-    <ion-infinite-scroll-content loadingSpinner="dots" loadingText="Cargando más monedas..."></ion-infinite-scroll-content>
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más monedas...">
+    </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

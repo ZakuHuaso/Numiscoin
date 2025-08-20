@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class CoinService {
   private baseUrl = `${environment.apiUrl}/coins`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener todas las monedas
   getCoins(): Observable<Coin[]> {
@@ -32,7 +32,7 @@ export class CoinService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    
+
     return this.http.post(`${this.baseUrl}/create.php`, coin, { headers });
   }
 
@@ -47,11 +47,11 @@ export class CoinService {
   }
 
   // Filtrar monedas por pais
-  getCoinsByPais(id_pais: number): Observable<Coin[]> {
-    return this.http.get<Coin[]>(
-      `${this.baseUrl}getByCountry.php?id_pais=${id_pais}`
-    );
+  getCoinsByCountryPaginated(idPais: number, limit: number, offset: number): Observable<Coin[]> {
+    return this.http.get<Coin[]>(`${this.baseUrl}/getByCountry.php?id_pais=${idPais}&limit=${limit}&offset=${offset}`);
   }
+
+
 
   // Obtener monedas de Chile paginadas
   getChileCoinsPaginated(page: number) {

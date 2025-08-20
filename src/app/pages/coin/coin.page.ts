@@ -59,6 +59,7 @@ export class CoinPage implements OnInit {
     this.router.navigate(['tabs/collection/collection-filtered', id_pais]);
   }
 
+  
   onSelectCountry(id_pais: number) {
     this.router.navigate(['tabs/collection/filtered'], {
       queryParams: { id_pais: id_pais },
