@@ -17,9 +17,9 @@
       <ion-card-header>
         <div class="recent-header">
           <ion-card-title>RECIENTES</ion-card-title>
-          <div class="recent-time">
+          <div class="recent-time" *ngIf="recentItem">
             <ion-icon name="time-outline"></ion-icon>
-            <span>1h atrás</span>
+            <span>{{ recentItem.timestamp | date:'short' }}</span>
           </div>
         </div>
       </ion-card-header>
@@ -72,34 +72,8 @@
               Monedas
             </ion-button>
           </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" fill="clear" class="category-button">
-              Fichas
-            </ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" fill="clear" class="category-button">
-              Billetes
-            </ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" fill="clear" class="category-button">
-              Documentos
-            </ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" fill="clear" class="category-button">
-              Fichas
-            </ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" fill="clear" class="category-button">
-              Otros
-            </ion-button>
-          </ion-col>
         </ion-row>
       </ion-grid>
     </div>
-
   </div>
 </ion-content>

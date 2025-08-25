@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { FormsModule } from "@angular/forms"
 import {
@@ -21,6 +21,8 @@ import {
 import { addIcons } from "ionicons"
 import { arrowBack, add, timeOutline, imageOutline } from "ionicons/icons"
 import { Router } from "@angular/router"
+import { CoinService } from "src/app/core/services/coin.service"
+
 
 export interface RecentItem {
   id: string
@@ -55,12 +57,39 @@ export interface RecentItem {
     IonCol,
   ],
 })
-export class CollectionPage {
+export class CollectionPage implements OnInit {
   isLoading = true
   recentItem: RecentItem | null = null
 
-  constructor( private router: Router) {
-    addIcons({arrowBack,add,timeOutline,imageOutline,});
+  constructor(private router: Router, private coinService: CoinService) {
+    addIcons({ arrowBack, add, timeOutline, imageOutline })
+  }
+
+  ngOnInit() {
+    this.loadRecentCoin()
+  }
+
+  loadRecentCoin() {
+    this.isLoading = true
+    this.coinService.getLastCoin().subscribe({
+      next: (coin) => {
+        if (coin) {
+          this.recentItem = {
+            id: coin.codigo,
+            title: coin.moneda,
+            description: `Diseñador: ${coin.disenador || "Desconocido"} | Valor: ${coin.valorAdquirido || "N/A"
+              }`,
+            imageUrl: coin.foto1,
+            timestamp: new Date(), // luego podemos traer created_at desde PHP
+          }
+        }
+        this.isLoading = false
+      },
+      error: (err) => {
+        console.error("Error cargando última moneda:", err)
+        this.isLoading = false
+      },
+    })
   }
 
   onImageError(event: any) {
@@ -68,11 +97,10 @@ export class CollectionPage {
   }
 
   navigateToNewCollection() {
-    this.router.navigateByUrl('/new-collection');
+    this.router.navigateByUrl("/new-collection")
   }
 
   navigateToCoin() {
-    this.router.navigateByUrl('/tabs/collection/coin');
+    this.router.navigateByUrl("/tabs/collection/coin")
   }
-  
 }
