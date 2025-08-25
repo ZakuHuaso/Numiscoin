@@ -15,46 +15,9 @@
 <ion-content [fullscreen]="true" class="coins-content">
   <div class="content-container">
     
-    <!-- Coins Swiper Section -->
-    <div class="coins-swiper-section">
-      <swiper-container
-        slides-per-view="1.2"
-        space-between="20"
-        centered-slides="true"
-        pagination="true"
-        pagination-clickable="true"
-        class="coins-swiper">
-        
-        <swiper-slide class="coin-slide">
-          <div class="coin-container">
-            <div class="coin-image coin-1"></div>
-          </div>
-        </swiper-slide>
-        
-        <swiper-slide class="coin-slide">
-          <div class="coin-container">
-            <div class="coin-image coin-2"></div>
-          </div>
-        </swiper-slide>
-        
-        <swiper-slide class="coin-slide">
-          <div class="coin-container">
-            <div class="coin-image coin-3"></div>
-          </div>
-        </swiper-slide>
-        
-        <swiper-slide class="coin-slide">
-          <div class="coin-container">
-            <div class="coin-image coin-4"></div>
-          </div>
-        </swiper-slide>
-        
-      </swiper-container>
-    </div>
-
     <!-- Categories Section -->
     <div class="categories-section">
-      <h2 class="section-title">CATEGORÍAS</h2>
+      <h2 class="section-title">PAISES</h2>
       
       <ion-grid class="categories-grid">
         <ion-row>
@@ -72,7 +35,7 @@
               expand="block" 
               fill="clear" 
               class="category-button"
-              (click)="goToFilteredCollection(2)">
+              (click)="onSelectCountry(9)">
               Argentina
             </ion-button>
           </ion-col>
@@ -81,7 +44,7 @@
               expand="block" 
               fill="clear" 
               class="category-button"
-              (click)="goToFilteredCollection(3)">
+              (click)="onSelectCountry(26)">
               Brasil
             </ion-button>
           </ion-col>
@@ -90,7 +53,7 @@
               expand="block" 
               fill="clear" 
               class="category-button"
-              (click)="goToFilteredCollection(4)">
+              (click)="onSelectCountry(142)">
               Perú
             </ion-button>
           </ion-col>
@@ -99,17 +62,8 @@
               expand="block" 
               fill="clear" 
               class="category-button"
-                (click)="goToFilteredCollection(5)">
+                (click)="goToFilteredCollection(60)">
               Estados Unidos
-            </ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button 
-              expand="block" 
-              fill="clear" 
-              class="category-button"
-              (click)="goToFilteredCollection(6)">
-              Otros
             </ion-button>
           </ion-col>
         </ion-row>

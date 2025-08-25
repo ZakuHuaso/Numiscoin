@@ -22,6 +22,12 @@ export class CoinService {
     return this.http.get<Coin[]>(`${this.baseUrl}/getLatest.php?limit=${limit}`);
   }
 
+  // Obterner la ultima moneda cargada
+  getLastCoin() {
+    return this.http.get<any>(`${this.baseUrl}/getLatest.php`);
+  }
+
+
   // Obtener una moneda por ID
   getCoinById(id: number): Observable<Coin> {
     return this.http.get<Coin>(`${this.baseUrl}/get_by_id.php?id=${id}`);
@@ -50,8 +56,6 @@ export class CoinService {
   getCoinsByCountryPaginated(idPais: number, limit: number, offset: number): Observable<Coin[]> {
     return this.http.get<Coin[]>(`${this.baseUrl}/getByCountry.php?id_pais=${idPais}&limit=${limit}&offset=${offset}`);
   }
-
-
 
   // Obtener monedas de Chile paginadas
   getChileCoinsPaginated(page: number) {
